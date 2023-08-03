@@ -23,7 +23,4 @@ jobs:
         shell: bash
         run: |
           email=$GITHUB_ACTOR
-          echo "$email"
           echo $email
-          email1=$(git config user.email)
-          echo $email1

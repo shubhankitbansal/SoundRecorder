@@ -25,9 +25,5 @@ jobs:
           email=$GITHUB_ACTOR
           echo $email
       - name: get email
-        id: test
-        uses: evvanErb/get-github-email-by-username-action@v1.25
-        with:
-          github-username: 'shubhankit91490' 
-      - name: Print the found email
-        run: echo "The email is ${{ steps.test.outputs.email }}"
+        run: |
+          echo $ENV_VARIABLE

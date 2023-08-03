@@ -14,6 +14,12 @@ on:
         type: string
       state:
         required: true
+        type: choice
+        description: Make a choice
+        options:
+          - Start
+          - Stop
+          - Restart
 
 jobs:
   build:

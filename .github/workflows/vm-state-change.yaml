@@ -15,7 +15,6 @@ on:
       state:
         required: true
         type: choice
-        description: Select State
         options:
           - None
           - Start

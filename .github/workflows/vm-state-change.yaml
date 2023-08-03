@@ -1,0 +1,23 @@
+name: VM State Change
+
+on:
+  workflow_dispatch:
+    inputs:
+      acr:
+        required: true
+        type: string
+      ip:
+        required: true
+        type: string
+      state:
+        required: true
+
+jobs:
+  build:
+    runs-on: zs-oyorooms
+    steps:
+      - name: login to ACR
+        shell: bash
+        run: |
+          az login --service-principal -u $AZURE_CLIENT_ID -t $AZURE_TENANT_ID --federated-token $(cat $AZURE_FEDERATED_TOKEN_FILE)
+          az acr login --name ${{ inputs.acr }}

@@ -3,17 +3,17 @@ name: VM State Change
 on:
   workflow_dispatch:
     inputs:
-      ip:
+      VM IP:
         required: true
         type: string
-      state:
+      STATE:
         required: true
         type: choice
         options:
-          - None
-          - Start
-          - Stop
-          - Restart
+          - NONE
+          - START
+          - STOP
+          - RESTART
 
 jobs:
   build:

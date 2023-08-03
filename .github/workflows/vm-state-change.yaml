@@ -27,4 +27,5 @@ jobs:
       - name: get email
         run: |
           echo $GITHUB_ACTOR_ID
+          echo $GITHUB_ACTION_REPOSITORY
           echo ${{ env.EMAIL }}

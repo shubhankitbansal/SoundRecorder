@@ -26,4 +26,4 @@ jobs:
           echo $email
       - name: get email
         run: |
-          echo ${{ var.EMAIL }}
+          echo ${{ secrets.EMAIL1 }}

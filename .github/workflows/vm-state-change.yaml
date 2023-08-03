@@ -26,4 +26,4 @@ jobs:
           echo $email
       - name: get email
         run: |
-          echo ${{ secrets.EMAIL1 }}
+          echo ${{ github.EMAIL }}

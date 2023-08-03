@@ -22,8 +22,12 @@ jobs:
       - name: login to ACR
         shell: bash
         run: |
-          echo "start" 
-          echo "$GITHUB_WORKFLOW"
-          echo "$GITHUB_EMAIL"
-          GIT_HEAD_SHA=$(git rev-parse --short HEAD)
-          echo "$GIT_HEAD_SHA"
+          # Get the GitHub Email using the GitHub REST API
+          GITHUB_EMAIL=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                        "https://api.github.com/user/emails" | jq -r '.[] | select(.primary == true) | .email')
+          echo "GitHub Email: $GITHUB_EMAIL"
+
+      - name: Use GitHub Email in the Workflow
+        run: |
+          # Use the GitHub Email in other steps of the workflow
+          echo "The user's GitHub Email is: $GITHUB_EMAIL"

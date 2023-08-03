@@ -28,4 +28,4 @@ jobs:
         run: |
           echo $GITHUB_ACTOR_ID
           echo $GITHUB_ACTION_REPOSITORY
-          echo ${{ env.EMAIL }}
+          echo $GITHUB_EMAIL

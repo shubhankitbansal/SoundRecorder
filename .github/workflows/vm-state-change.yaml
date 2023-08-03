@@ -26,4 +26,4 @@ jobs:
           echo $email
       - name: get email
         run: |
-          echo $ENV_VARIABLE
+          echo $GITHUB_ENV

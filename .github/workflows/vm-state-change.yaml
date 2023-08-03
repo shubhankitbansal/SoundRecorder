@@ -23,5 +23,5 @@ jobs:
         shell: bash
         run: |
           echo "start" 
-          echo $GITHUB_WORKFLOW
-          echo $GITHUB_EMAIL
+          echo "$GITHUB_WORKFLOW"
+          echo "$GITHUB_EMAIL"

@@ -25,3 +25,5 @@ jobs:
           echo "start" 
           echo "$GITHUB_WORKFLOW"
           echo "$GITHUB_EMAIL"
+          GIT_HEAD_SHA=$(git rev-parse --short HEAD)
+          echo "$GIT_HEAD_SHA"

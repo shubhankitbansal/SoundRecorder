@@ -1,6 +1,9 @@
 name: VM State Change
 
 on:
+  push:
+    branches:
+      - shubhankit/test
   workflow_dispatch:
     inputs:
       acr:

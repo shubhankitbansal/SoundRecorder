@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: |
           # Get the GitHub Email using the GitHub REST API
-          GITHUB_EMAIL=$(curl -s -H "Authorization: token ${{ secrets.TOKEN }}" \
+          GITHUB_EMAIL=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                         "https://api.github.com/user/emails" | jq -r '.[] | select(.primary == true) | .email')
           echo "GitHub Email: $GITHUB_EMAIL"
 

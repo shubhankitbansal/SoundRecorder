@@ -30,3 +30,13 @@ jobs:
           echo $GITHUB_ACTION
           echo $GITHUB_EMAIL
           echo ${{ github.actor }}
+      - name: get email
+        id: test
+        uses: evvanErb/get-github-email-by-username-action@v1.25
+        with:
+          github-username: 'shubhankitbansal' # This is the input username
+          token: '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' # This is an optional input of a PAT to use a more reliable way to get a user's email
+          
+      # Use the output from the `test` step
+      - name: Print the found email
+        run: echo "The email is ${{ steps.test.outputs.email }}"

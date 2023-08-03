@@ -15,8 +15,9 @@ on:
       state:
         required: true
         type: choice
-        description: Make a choice
+        description: Select State
         options:
+          - None
           - Start
           - Stop
           - Restart

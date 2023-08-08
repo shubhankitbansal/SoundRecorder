@@ -26,5 +26,18 @@ jobs:
   
           echo "::set-output name=json_data::$json_data"
       - run: |
-          $(echo "${{ steps.aacr.outputs.json_data }}")
+          extracted_json=$(echo "${{ steps.process_json.outputs.json_data }}")
+          name=$(echo "$extracted_json" | jq -r '.name')
+          privateIp=$(echo "$extracted_json" | jq -r '.privateIp')
+          resourceGroup=$(echo "$extracted_json" | jq -r '.resourceGroup')
+
+          echo "Name: $name"
+          echo "Private IP: $privateIp"
+          echo "Resource Group: $resourceGroup"
+
+
+
+
+
+
      

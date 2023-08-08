@@ -26,6 +26,7 @@ jobs:
           privateIp=$(echo "$json_data" | jq -r '.privateIp')
           resourceGroup=$(echo "$json_data" | jq -r '.resourceGroup')
 
+          echo $name
           echo "NAME=$name" >> $GITHUB_OUTPUT
           echo "PRIVATE_IP=$privateIp" >> $GITHUB_OUTPUT
           echo "RESOURCE_GROUP=$resourceGroup" >> $GITHUB_OUTPUT

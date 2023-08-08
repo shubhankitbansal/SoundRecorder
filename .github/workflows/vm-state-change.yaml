@@ -26,14 +26,10 @@ jobs:
           privateIp=$(echo "$json_data" | jq -r '.privateIp')
           resourceGroup=$(echo "$json_data" | jq -r '.resourceGroup')
 
-          echo "Name: $name"
-          echo "Private IP: $privateIp"
-          echo "Resource Group: $resourceGroup"
+          echo "NAME=$name" >> $GITHUB_OUTPUT
+          echo "PRIVATE_IP=$privateIp" >> $GITHUB_OUTPUT
+          echo "RESOURCE_GROUP=$resourceGroup" >> $GITHUB_OUTPUT
 
-        env:
-          NAME: ${{ steps.process_json.outputs.name }}
-          PRIVATE_IP: ${{ steps.process_json.outputs.privateIp }}
-          RESOURCE_GROUP: ${{ steps.process_json.outputs.resourceGroup }}
 
       - run: |
           echo "Name: $NAME"

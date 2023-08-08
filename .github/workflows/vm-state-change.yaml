@@ -29,10 +29,16 @@ jobs:
           echo "Name: $name"
           echo "Private IP: $privateIp"
           echo "Resource Group: $resourceGroup"
+
+        env:
+          NAME: ${{ steps.process_json.outputs.name }}
+          PRIVATE_IP: ${{ steps.process_json.outputs.privateIp }}
+          RESOURCE_GROUP: ${{ steps.process_json.outputs.resourceGroup }}
+
       - run: |
-          echo "${{ steps.process_json.outputs.name }}"
-          echo "${{ steps.process_json.outputs.privateIp }}"
-          echo "${{ steps.process_json.outputs.resourceGroup }}"
+          echo "Name: $NAME"
+          echo "Private IP: $PRIVATE_IP"
+          echo "Resource Group: $RESOURCE_GROUP"
 
 
 

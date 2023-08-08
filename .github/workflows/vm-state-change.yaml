@@ -20,11 +20,7 @@ jobs:
         id: aacr
         run: |
           # Your JSON data
-          json_data={
-            "name": "zs-oyo-temp-vm",
-            "privateIp": "10.73.100.4",
-            "resourceGroup": "Oyo-migration-RG"
-          }
+          json_data={"name": "zs-oyo-temp-vm","privateIp": "10.73.100.4","resourceGroup": "Oyo-migration-RG"}
 
           echo $json_data
   

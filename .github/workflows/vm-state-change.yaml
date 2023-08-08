@@ -3,9 +3,6 @@ name: VM State Change
 on:
   workflow_dispatch:
     inputs:
-      VM IP:
-        required: true
-        type: string
       STATE:
         required: true
         type: choice
@@ -23,11 +20,13 @@ jobs:
         id: aacr
         run: |
           # Your JSON data
-          json_data='{
+          json_data={
             "name": "zs-oyo-temp-vm",
             "privateIp": "10.73.100.4",
             "resourceGroup": "Oyo-migration-RG"
-          }'
+          }
+
+          echo $json_data
   
           echo "::set-output name=json_data::$json_data"
       - run: |

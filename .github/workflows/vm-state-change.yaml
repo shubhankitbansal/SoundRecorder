@@ -33,8 +33,8 @@ jobs:
 
       - run: |
           echo "Name: ${{ steps.process_json.outputs.NAME }}"
-          echo "Private IP: ${{ steps.process_json.PRIVATE_IP }}"
-          echo "Resource Group: ${{ steps.process_json.RESOURCE_GROUP }}"
+          echo "Private IP: ${{ steps.process_json.outputs.PRIVATE_IP }}"
+          echo "Resource Group: ${{ steps.process_json.outputs.RESOURCE_GROUP }}"
 
 
 

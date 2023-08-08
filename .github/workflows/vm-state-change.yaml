@@ -31,5 +31,5 @@ jobs:
   
           echo "::set-output name=json_data::$json_data"
       - run: |
-          $(echo "${{ steps.process_json.outputs.json_data }}")
+          $(echo "${{ steps.aacr.outputs.json_data }}")
      

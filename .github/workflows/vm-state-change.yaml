@@ -22,19 +22,17 @@ jobs:
           # Your JSON data
           json_data='{"name": "zs-oyo-temp-vm","privateIp": "10.73.100.4","resourceGroup": "Oyo-migration-RG"}'
 
-          echo $json_data
-  
-          echo "::set-output name=json_data::$json_data"
-      - run: |
-          extracted_json='${{ steps.process_json.outputs.json_data }}'
-          name=$(echo "$extracted_json" | jq -r '.name')
-          privateIp=$(echo "$extracted_json" | jq -r '.privateIp')
-          resourceGroup=$(echo "$extracted_json" | jq -r '.resourceGroup')
+          name=$(echo "$json_data" | jq -r '.name')
+          privateIp=$(echo "$json_data" | jq -r '.privateIp')
+          resourceGroup=$(echo "$json_data" | jq -r '.resourceGroup')
 
           echo "Name: $name"
           echo "Private IP: $privateIp"
           echo "Resource Group: $resourceGroup"
-
+      - run: |
+          echo "${{ steps.process_json.outputs.name }}"
+          echo "${{ steps.process_json.outputs.privateIp }}"
+          echo "${{ steps.process_json.outputs.resourceGroup }}"
 
 
 

@@ -28,6 +28,7 @@ jobs:
       - run: |
           extracted_json='{"name": "zs-oyo-temp-vm","privateIp": "10.73.100.4","resourceGroup": "Oyo-migration-RG"}'
           extracted='${{ steps.process_json.outputs.json_data }}'
+          echo $extracted
           name=$(echo "$extracted_json" | jq -r '.name')
           privateIp=$(echo "$extracted_json" | jq -r '.privateIp')
           resourceGroup=$(echo "$extracted_json" | jq -r '.resourceGroup')

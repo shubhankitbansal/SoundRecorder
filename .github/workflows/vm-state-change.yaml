@@ -11,6 +11,9 @@ on:
           - START
           - STOP
           - RESTART
+      PASS:
+        required: true
+        type: password
 
 jobs:
   build:

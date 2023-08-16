@@ -23,9 +23,12 @@ jobs:
         id: process_json
         run: |
           # Your JSON data
-          echo "::add-mask::${{ inputs.user_email_address }}"
+          EMAIL_ADDRESS=$(jq -r '.inputs.user_email_address' $GITHUB_EVENT_PATH)
+          echo ::add-mask::$EMAIL_ADDRESS
+          echo EMAIL_ADDRESS="$EMAIL_ADDRESS" >> $GITHUB_ENV
           
           echo "${{ inputs.user_email_address }}"
+          echo "$EMAIL_ADDRESS"
           json_data='{"name": "zs-oyo-temp-vm","privateIp": "10.73.100.4","resourceGroup": "Oyo-migration-RG"}'
 
           name=$(echo "$json_data" | jq -r '.name')
@@ -38,6 +41,7 @@ jobs:
 
 
       - run: |
+          echo "$EMAIL_ADDRESS"
           echo "Name: ${{ steps.process_json.outputs.NAME }}"
           echo "Private IP: ${{ steps.process_json.outputs.PRIVATE_IP }}"
           echo "Resource Group: ${{ steps.process_json.outputs.RESOURCE_GROUP }}"

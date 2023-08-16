@@ -11,9 +11,9 @@ on:
           - START
           - STOP
           - RESTART
-      PASS:
+      user_email_address:
         required: true
-        type: password
+        type: string
 
 jobs:
   build:
@@ -23,8 +23,9 @@ jobs:
         id: process_json
         run: |
           # Your JSON data
-          echo "::add-mask::dana@green.com"
-          echo "abc"
+          echo "::add-mask::${{ inputs.user_email_address }}"
+          
+          echo "${{ inputs.user_email_address }}"
           json_data='{"name": "zs-oyo-temp-vm","privateIp": "10.73.100.4","resourceGroup": "Oyo-migration-RG"}'
 
           name=$(echo "$json_data" | jq -r '.name')

@@ -23,7 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          VEARI="aced"
           curl 'https://utilapi.geeksforgeeks.org/api/geo/$VEARI/usergeodetails/VEARI/${{VEARI}}/${{ env.VEARI }}' \
             -H 'authority: utilapi.geeksforgeeks.org' \
             -H 'accept: */*' \
@@ -43,6 +42,8 @@ jobs:
           UPDATED_VARIABLE="New Value"
           echo "ACD=$UPDATED_VARIABLE" >> $GITHUB_ENV
           echo ${{ env.ACD }}
+        env:
+          VEARI: "aced"
       - name: env print
         run: |
           EMAILS=${{ vars.EMAIL }}

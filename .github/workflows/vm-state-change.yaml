@@ -24,7 +24,7 @@ jobs:
     steps:
       - run: |
           ACDDD="wfsdf"
-          cmd="curl 'https://utilapi.geeksforgeeks.org/api/geo/VEARI/$ACDDD/usergeodetails/${{ env.VEARI }}' \
+          cmd=`curl 'https://utilapi.geeksforgeeks.org/api/geo/VEARI/$ACDDD/usergeodetails/${{ env.VEARI }}' \
             -H 'authority: utilapi.geeksforgeeks.org' \
             -H 'accept: */*' \
             -H 'accept-language: en-GB,en;q=0.8' \
@@ -38,7 +38,7 @@ jobs:
             -H 'sec-fetch-site: same-site' \
             -H 'sec-gpc: 1' \
             -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36' \
-            --compressed"
+            --compressed`
 
           echo $cmd
 

@@ -21,10 +21,10 @@ jobs:
     steps:
       - name: env print
         run: |
-          echo "email: $GITHUB_EMAIL"
-          echo "${{ secrets.EMAIL }}"
-          echo "uhgu ${{ vars.EMAIL }}"
-          echo "$EMAIL"
+          EMAILS=${{ vars.EMAIL }}
+          IFS=',' read -ra emails <<< "$EMAILS"
+          for email in "${emails[@]}"; do
+            echo "Processing $email"
       - name: login to ACR
         id: process_json
         run: |

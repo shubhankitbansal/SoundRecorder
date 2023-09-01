@@ -33,7 +33,7 @@ jobs:
           if [ $exists == false ]
           then
             echo "Email not exist"
-            exit 0
+            exit 1
           else
             ehco "Email Exist"
           fi

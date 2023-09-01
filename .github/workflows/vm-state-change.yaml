@@ -21,9 +21,9 @@ jobs:
     steps:
       - name: env print
         run: |
-          echo "email: $GITHUB_EMAIL1"
-          echo "${{ secrets.EMAIL1 }}"
-          echo "${{ env.EMAIL1 }}"
+          echo "email: $GITHUB_EMAIL"
+          echo "${{ secrets.EMAIL }}"
+          echo "uhgu ${{ env.EMAIL }}"
       - name: login to ACR
         id: process_json
         run: |

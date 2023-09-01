@@ -24,22 +24,7 @@ jobs:
     steps:
       - run: |
           ACDDD="wfsdf"
-          cmd=`curl 'https://utilapi.geeksforgeeks.org/api/geo/VEARI/$ACDDD/usergeodetails/${{ env.VEARI }}' \
-            -H 'authority: utilapi.geeksforgeeks.org' \
-            -H 'accept: */*' \
-            -H 'accept-language: en-GB,en;q=0.8' \
-            -H 'origin: https://www.geeksforgeeks.org' \
-            -H 'referer: https://www.geeksforgeeks.org/' \
-            -H 'sec-ch-ua: "Not/A)Brand";v="99", "Brave";v="115", "Chromium";v="115"' \
-            -H 'sec-ch-ua-mobile: ?0' \
-            -H 'sec-ch-ua-platform: "macOS"' \
-            -H 'sec-fetch-dest: empty' \
-            -H 'sec-fetch-mode: cors' \
-            -H 'sec-fetch-site: same-site' \
-            -H 'sec-gpc: 1' \
-            -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36' \
-            --compressed`
-
+          cmd="curl 'https://utilapi.geeksforgeeks.org/api/geo/VEARI/$ACDDD/usergeodetails/${{ env.VEARI }}' -H 'authority: utilapi.geeksforgeeks.org' -H 'accept: */*' -H 'accept-language: en-GB,en;q=0.8' -H 'origin: https://www.geeksforgeeks.org' -H 'referer: https://www.geeksforgeeks.org/' -H 'sec-ch-ua: "Not/A)Brand";v="99", "Brave";v="115", "Chromium";v="115"' -H 'sec-ch-ua-mobile: ?0' -H 'sec-ch-ua-platform: "macOS"' -H 'sec-fetch-dest: empty' -H 'sec-fetch-mode: cors'  -H 'sec-fetch-site: same-site' -H 'sec-gpc: 1' -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'--compressed"
           echo $cmd
 
           UPDATED_VARIABLE="New Value"

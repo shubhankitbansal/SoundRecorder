@@ -24,6 +24,7 @@ jobs:
           echo "email: $GITHUB_EMAIL"
           echo "${{ secrets.EMAIL }}"
           echo "uhgu ${{ env.EMAIL }}"
+          echo "$EMAIL"
       - name: login to ACR
         id: process_json
         run: |

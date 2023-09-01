@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "email: $GITHUB_EMAIL"
           echo "${{ secrets.EMAIL }}"
-          echo "uhgu ${{ env.EMAIL }}"
+          echo "uhgu ${{ vars.EMAIL }}"
           echo "$EMAIL"
       - name: login to ACR
         id: process_json

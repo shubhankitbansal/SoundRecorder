@@ -26,10 +26,12 @@ jobs:
           exists=false
           for email in "${emails[@]}"; do
             if [ ${{ inputs.user_email_address }} == $email ]
+            then
               exists=true
             fi
           done
           if [ $exists == false ]
+          then
             echo "Email not exist"
             exit 0
           else

@@ -15,6 +15,9 @@ on:
         required: true
         type: string
 
+env:
+  ACD: 'acdd'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,8 +42,6 @@ jobs:
           UPDATED_VARIABLE="New Value"
           echo "::set-env name=ACD::$UPDATED_VARIABLE"
           echo ${{ env.ACD }}
-        env:
-          ACD: 'dsd'
       - name: env print
         run: |
           EMAILS=${{ vars.EMAIL }}

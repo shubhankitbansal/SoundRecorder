@@ -37,7 +37,7 @@ jobs:
             --compressed
 
           echo $ACD
-          echo $s{{ env.ACD }}
+          echo dsf${{ env.ACD }}
         env:
           ACD: 'dsd'
       - name: env print

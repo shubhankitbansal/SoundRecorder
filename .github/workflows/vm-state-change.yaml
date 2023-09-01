@@ -23,9 +23,18 @@ jobs:
         run: |
           EMAILS=${{ vars.EMAIL }}
           IFS=',' read -ra emails <<< "$EMAILS"
+          exists=false
           for email in "${emails[@]}"; do
-            echo "Processing $email"
+            if [ ${{ inputs.user_email_address }} == $email ]
+              exists=true
+            fi
           done
+          if [ $exists == false ]
+            echo "Email not exist"
+            exit 0
+          else
+            ehco "Email Exist"
+          fi
       - name: login to ACR
         id: process_json
         run: |

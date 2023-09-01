@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          curl 'https://utilapi.geeksforgeeks.org/api/geo/$VEARI/usergeodetails/VEARI/${{VEARI}}/${{ env.VEARI }}' \
+          curl 'https://utilapi.geeksforgeeks.org/api/geo/$VEARI/usergeodetails/${{ env.VEARI }}' \
             -H 'authority: utilapi.geeksforgeeks.org' \
             -H 'accept: */*' \
             -H 'accept-language: en-GB,en;q=0.8' \

@@ -35,7 +35,7 @@ jobs:
             echo "Email not exist"
             exit 1
           else
-            ehco "Email Exist"
+            echo "Email Exist"
           fi
       - name: login to ACR
         id: process_json

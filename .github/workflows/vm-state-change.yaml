@@ -25,6 +25,7 @@ jobs:
           IFS=',' read -ra emails <<< "$EMAILS"
           for email in "${emails[@]}"; do
             echo "Processing $email"
+          done
       - name: login to ACR
         id: process_json
         run: |

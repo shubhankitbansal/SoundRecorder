@@ -35,6 +35,9 @@ jobs:
           echo ${{ env.ACD }}
         env:
           VEARI: "aced"
+      - name: sleep for 1 minutes
+        run: sleep 60s
+        shell: bash
       - name: env print
         run: |
           EMAILS=${{ vars.EMAIL }}

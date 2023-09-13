@@ -26,36 +26,13 @@ jobs:
         run: |
           end_point="acnc"
           echo "image=$end_point" >> $GITHUB_OUTPUT
-      - run: |
-          ACDDD="wfsdf"
-          curl 'https://utilapi.geeksforgeeks.org/api/geo/${{ steps.first.outputs.image }}/usergeodetails/${{ env.VEARI }}' -H 'authority: utilapi.geeksforgeeks.org' -H 'accept: */*' -H 'accept-language: en-GB,en;q=0.8' -H 'origin: https://www.geeksforgeeks.org' -H 'referer: https://www.geeksforgeeks.org/' --compressed
-
-          UPDATED_VARIABLE="New Value"
-          echo "ACD=$UPDATED_VARIABLE" >> $GITHUB_ENV
-          echo ${{ env.ACD }}
-        env:
-          VEARI: "aced"
       - name: sleep for 1 minutes
-        run: sleep 60s
-        shell: bash
-      - name: env print
         run: |
-          EMAILS=${{ vars.EMAIL }}
-          IFS=',' read -ra emails <<< "$EMAILS"
-          exists=false
-          for email in "${emails[@]}"; do
-            if [ ${{ inputs.user_email_address }} == $email ]
-            then
-              exists=true
-            fi
-          done
-          if [ $exists == false ]
-          then
-            echo "Email not exist"
-            exit 1
-          else
-            echo "Email Exist"
-          fi
+          echo "start"
+          sleep 300s
+          echo "end"
+        shell: bash
+        
       - name: login to ACR
         id: process_json
         run: |

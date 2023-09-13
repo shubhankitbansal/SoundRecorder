@@ -13,6 +13,7 @@ on:
           - RESTART
       user_email_address:
         required: true
+        description: 'Email In which We send info'
         type: string
 
 env:

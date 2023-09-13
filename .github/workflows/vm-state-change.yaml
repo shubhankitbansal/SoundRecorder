@@ -23,6 +23,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate Unique ID
+        id: unique_id
+        run: echo "::set-output name=uuid::$(uuidgen)"
+      
+      - name: Use Unique ID
+        run: |
+          unique_id=$GITHUB_RUN_ID-${{ steps.unique_id.outputs.uuid }}
+          echo "Unique ID: $unique_id"
       - id: first
         run: |
           end_point="acnc"

@@ -15,6 +15,9 @@ on:
         required: true
         description: 'Email In which We send info'
         type: string
+      environment:
+        type: environment
+        description: Select the environment
 
 env:
   ACD: 'acdd'

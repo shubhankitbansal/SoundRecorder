@@ -33,6 +33,9 @@ jobs:
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
           my_map="${MY_MAP}"
+          val1=${my_map['hmsexp']}
+          echo $val1
+          echo "$val1"
           echo "a: ${MY_MAP['hmsexp']}"
           echo "b: ${my_map['hmsexp']}"
           echo "c: $MY_MAP['hmsexp']"

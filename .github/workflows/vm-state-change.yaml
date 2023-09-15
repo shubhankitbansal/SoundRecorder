@@ -32,9 +32,10 @@ jobs:
         id: unique_id
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
-          my_map="${MY_MAP}"
-          val1=$(echo "$my_map" | jq -r '.hmsexp')
+          val1=$(echo "$MY_MAP" | jq -r '.hmsexp')
+          val2=$(echo "${{ vars.MANAGER_LIST }}" | jq -r '.finbus')
           echo $val1
+          echo $val2
       
       - name: Use Unique ID
         run: |

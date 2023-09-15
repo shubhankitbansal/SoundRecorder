@@ -33,7 +33,7 @@ jobs:
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
           val1=$(echo "$MY_MAP" | jq -r '.hmsexp')
-          val2=$(echo "${{ vars.MANAGER_LIST }}" | jq -r '.finbus')
+          val2=$(echo '${{ vars.MANAGER_LIST }}' | jq -r '.finbus')
           echo $val1
           echo $val2
       

@@ -33,7 +33,7 @@ jobs:
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
           my_map="${MY_MAP}"
-          val1=$(echo "my_map" | jq -r '.hmsexp')
+          val1=$(echo "$my_map" | jq -r '.hmsexp')
           echo $val1
       
       - name: Use Unique ID

@@ -33,10 +33,10 @@ jobs:
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
           my_map="${MY_MAP}"
-          echo "a: ${MY_MAP}"
-          echo "b: ${my_map}"
-          echo "c: $MY_MAP"
-          echo "d: $my_map"
+          echo "a: ${MY_MAP['hmsexp']}"
+          echo "b: ${my_map['hmsexp']}"
+          echo "c: $MY_MAP['hmsexp']"
+          echo "d: $my_map['hmsexp']"
       
       - name: Use Unique ID
         run: |

@@ -26,16 +26,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      my_map: '{"hmsexp": "PARTH_METHA", "owndel": "PARTH_MEHTA", "cap": "akash shrivastava"}'
+      MY_MAP: '{"hmsexp": "PARTH_METHA", "owndel": "PARTH_MEHTA", "cap": "akash shrivastava"}'
     steps:
       - name: Generate Unique ID
         id: unique_id
         run: |
           echo "::set-output name=uuid::$(uuidgen)"
-          MY_MAP="${my_map}"
-          echo "hmsexp : ${MY_MAP['hmsexp']}"
-          echo "owndel : ${MY_MAP['owndel']}"
-          echo "cap : ${MY_MAP['cap']}"
+          my_map="${MY_MAP}"
+          echo "hmsexp : ${my_map['hmsexp']}"
+          echo "owndel : ${my_map['owndel']}"
+          echo "cap : ${my_map['cap']}"
       
       - name: Use Unique ID
         run: |

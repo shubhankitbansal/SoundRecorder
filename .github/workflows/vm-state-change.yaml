@@ -28,6 +28,8 @@ jobs:
     env:
       MY_MAP: '{"hmsexp": "PARTH_METHA", "owndel": "PARTH_MEHTA", "cap": "akash shrivastava"}'
     steps:  
+      - name: Checkout Repository
+        uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:

@@ -37,7 +37,7 @@ jobs:
           python-version: 3.x
 
       - name: Run Python Script
-        run: python test1.py
+        run: python .github/workflows/test1.py
       - name: Generate Unique ID
         id: unique_id
         run: |

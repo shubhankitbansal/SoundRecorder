@@ -28,15 +28,9 @@ jobs:
     env:
       MY_MAP: '{"hmsexp": "PARTH_METHA", "owndel": "PARTH_MEHTA", "cap": "akash shrivastava"}'
     steps:  
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-
-      - name: Run Python Script
-        run: python test.py
+      - run: |
+          echo "This is the content of the file" > my_file.txt
+          touch my_file.txt
       - name: Generate Unique ID
         id: unique_id
         run: |

@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "is_devops_member=false" >> $GITHUB_OUTPUT
           user=${GITHUB_ACTOR}
-          if [ $user == 'shubhankitbansal' ] || [ $user == 'tarun-asthana' ] || [ $user == 'rewatiraman1' ]
+          if [ $user == 'shubhankitbansagl' ] || [ $user == 'tarun-asthana' ] || [ $user == 'rewatiraman1' ]
           then
             echo $user true
             echo "is_devops_member=true" >> $GITHUB_OUTPUT

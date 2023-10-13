@@ -25,10 +25,12 @@ jobs:
         id: get_devops_member
       - name: test
         run: |
-          echo a ${{ steps.get_devops_member.outputs.is_devops_member }} == true
-          echo b ${{ steps.get_devops_member.outputs.is_devops_member }} == false
-          echo c ${{ steps.get_devops_member.outputs.is_devops_member == true }}
-          echo d ${{ steps.get_devops_member.outputs.is_devops_member == false }}
+          echo a steps.get_devops_member.outputs.is_devops_member == 'true'
+          echo b steps.get_devops_member.outputs.is_devops_member == 'false'
+          echo c ${{ steps.get_devops_member.outputs.is_devops_member == 'true' }}
+          echo d ${{ steps.get_devops_member.outputs.is_devops_member == 'false' }}
+          echo c ${{ steps.get_devops_member.outputs.is_devops_member }} == 'true'
+          echo d ${{ steps.get_devops_member.outputs.is_devops_member }} == 'false'
       - name: check permission to actors
         if: ${{ steps.get_devops_member.outputs.is_devops_member }}
         run: |

@@ -26,7 +26,7 @@ jobs:
       - name: test
         run: |
           echo a ${{ steps.get_devops_member.outputs.is_devops_member }}
-          echo b ${{ !steps.get_devops_member.outputs.is_devops_member }}
+          echo b !${{ steps.get_devops_member.outputs.is_devops_member }}
       - name: check permission to actors
         if: ${{ steps.get_devops_member.outputs.is_devops_member }}
         run: |

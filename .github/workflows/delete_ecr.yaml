@@ -9,13 +9,13 @@ on:
 
 jobs:
   build:
-    runs-on: zs-oyorooms
+    runs-on:  ubuntu-latest
     steps:
       - name: match user with devops user
         run: |
           echo "is_devops_member=false" >> $GITHUB_OUTPUT
           user=${GITHUB_ACTOR}
-          if [ $user == 'shubhankit91490' ] || [ $user == 'tarun-asthana' ] || [ $user == 'rewatiraman1' ]
+          if [ $user == 'shubhankitbansal' ] || [ $user == 'tarun-asthana' ] || [ $user == 'rewatiraman1' ]
           then
             echo "is_devops_member=true" >> $GITHUB_OUTPUT
           fi

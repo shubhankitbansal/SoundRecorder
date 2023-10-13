@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "is_devops_member=false" >> $GITHUB_OUTPUT
           user=${GITHUB_ACTOR}
-          if [ $user == 'shubhankitbansal1' ] || [ $user == 'tarun-asthana' ] || [ $user == 'rewatiraman1' ]
+          if [ $user == 'shubhankitbansal' ] || [ $user == 'tarun-asthana' ] || [ $user == 'rewatiraman1' ]
           then
             echo $user true
             echo "is_devops_member=true" >> $GITHUB_OUTPUT
@@ -25,8 +25,10 @@ jobs:
         id: get_devops_member
       - name: test
         run: |
-          echo a ${{ steps.get_devops_member.outputs.is_devops_member }}
-          echo b !${{ steps.get_devops_member.outputs.is_devops_member }}
+          echo a ${{ steps.get_devops_member.outputs.is_devops_member }} == true
+          echo b ${{ steps.get_devops_member.outputs.is_devops_member }} == false
+          echo c ${{ steps.get_devops_member.outputs.is_devops_member == true }}
+          echo d ${{ steps.get_devops_member.outputs.is_devops_member == false }}
       - name: check permission to actors
         if: ${{ steps.get_devops_member.outputs.is_devops_member }}
         run: |

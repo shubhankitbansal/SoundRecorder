@@ -45,17 +45,8 @@ jobs:
         if: true
         run: |
           CURRENT_USER=${GITHUB_ACTOR}
-          namespace_list=($(echo '${{ vars.NAMESPACE_ACCESS_LIST }}' | jq ))
-          echo $namespace_list
-          USER_HAS_ACCESS=false
-          for namespace in $namespace_list
-          do
-            if [ ${{ inputs.NAMESPACE }}  == $namespace ]
-            then
-                echo namesapce $namespace
-                USER_HAS_ACCESS=true
-            fi
-          done
+          USER_HAS_ACCESS=($(echo '${{ vars.NAMESPACE_ACCESS_LIST }}' | jq '.shubhankitbansal | any(. == "${{ inputs.NAMESPACE }}" ))
+          echo hasAccess $USER_HAS_ACCESS
           if [ $USER_HAS_ACCESS == false ]
           then
             echo "Not Authorised"

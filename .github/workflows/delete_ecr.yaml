@@ -45,7 +45,7 @@ jobs:
         if: true
         run: |
           CURRENT_USER=${GITHUB_ACTOR}
-          USER_HAS_ACCESS=($(echo '${{ vars.NAMESPACE_ACCESS_LIST }}' | jq '.shubhankitbansal | any(. == "${{ inputs.NAMESPACE }}" ))
+          USER_HAS_ACCESS=($(echo '${{ vars.NAMESPACE_ACCESS_LIST }}' | jq '.shubhankitbansal | any(. == "${{ inputs.NAMESPACE }}" ))'
           echo hasAccess $USER_HAS_ACCESS
           if [ $USER_HAS_ACCESS == false ]
           then

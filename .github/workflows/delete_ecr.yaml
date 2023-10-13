@@ -31,6 +31,7 @@ jobs:
           echo d ${{ steps.get_devops_member.outputs.is_devops_member == 'false' }}
           echo c ${{ steps.get_devops_member.outputs.is_devops_member }} == 'true'
           echo d ${{ steps.get_devops_member.outputs.is_devops_member }} == 'false'
+          echo dsfd ${{ !${{ steps.get_devops_member.outputs.is_devops_member }} }}
       - name: check permission to actors
         if: ${{ steps.get_devops_member.outputs.is_devops_member }}
         run: |

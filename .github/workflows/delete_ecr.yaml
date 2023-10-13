@@ -1,0 +1,71 @@
+name: Delete ECR Repository
+
+on:
+  workflow_dispatch:
+    inputs:
+      NAMESPACE:
+          required: true
+          type: string
+
+jobs:
+  build:
+    runs-on: zs-oyorooms
+    steps:
+      - name: match user with devops user
+        run: |
+          echo "is_devops_member=false" >> $GITHUB_OUTPUT
+          user=${GITHUB_ACTOR}
+          if [ $user == 'shubhankit91490' ] || [ $user == 'tarun-asthana' ] || [ $user == 'rewatiraman1' ]
+          then
+            echo "is_devops_member=true" >> $GITHUB_OUTPUT
+          fi
+        id: get_devops_member
+      - name: check permission to actors
+        if: ${{ !steps.get_devops_member.outputs.is_devops_member }}
+        run: |
+          CURRENT_USER=${GITHUB_ACTOR}
+          EXTENDED_DEVOPS_ACTORS=${{ vars.EXTENDED_DEVOPS_ACTORS }}
+          IFS=',' read -ra extended_devops_actors <<< "$EXTENDED_DEVOPS_ACTORS"
+          IS_AUTHORISED=false
+          for ACTOR in "${extended_devops_actors[@]}"
+          do
+            if [ $CURRENT_USER == $ACTOR ]
+            then
+              IS_AUTHORISED=true
+            fi
+          done
+          if [ $IS_AUTHORISED == false ]
+          then
+            echo "Not Authorised"
+            exit 1
+          else
+            echo "Authorised"
+          fi
+      - name: check permission for namespaces
+        if: true
+        run: |
+          CURRENT_USER=${GITHUB_ACTOR}
+          namespace_list=($(echo '${{ vars.NAMESPACE_ACCESS_LIST }}' | jq -r '.$CURRENT_USER[]'))
+          USER_HAS_ACCESS=false
+          for namespace in $namespace_list
+          do
+            if [ ${{ inputs.NAMESPACE }}  == $namespace ]
+            then
+                USER_HAS_ACCESS=true
+            fi
+          done
+          if [ $USER_HAS_ACCESS == false ]
+          then
+            echo "Not Authorised"
+            exit 1
+          else
+            echo "Authorised"
+          fi
+      - name: list_of_repository
+        if: false
+        run: |
+          repositories=($(aws ecr describe-repositories --query 'repositories[]' | jq 'map(select(.repositoryName | startswith("${{ inputs.NAMESPACE }}/"))) | map(.repositoryName)' | jq -r '.[]'))
+          for repository in $repositories
+          do
+            aws ecr delete-repository --repository-name $repository --force
+          done

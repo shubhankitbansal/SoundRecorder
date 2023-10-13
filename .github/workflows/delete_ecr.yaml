@@ -22,9 +22,11 @@ jobs:
           else
             echo $user false
           fi
+          echo a ${{ steps.get_devops_member.outputs.is_devops_member }}
+          echo b ${{ !steps.get_devops_member.outputs.is_devops_member }}
         id: get_devops_member
       - name: check permission to actors
-        if: ${{ !steps.get_devops_member.outputs.is_devops_member }}
+        if: ${{ steps.get_devops_member.outputs.is_devops_member }}
         run: |
           CURRENT_USER=${GITHUB_ACTOR}
           EXTENDED_DEVOPS_ACTORS=${{ vars.EXTENDED_DEVOPS_ACTORS }}

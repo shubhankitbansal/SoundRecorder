@@ -11,6 +11,18 @@ jobs:
   build:
     runs-on:  ubuntu-latest
     steps:
+      - name: check permission to actors
+        id: get_current_user_info
+        run: |
+          CURRENT_USER=${GITHUB_ACTOR}
+          echo "USERNAME=$CURRENT_USER" >> $GITHUB_OUTPUT
+      - run: | 
+          USER_EMAIL=$(echo '${{ vars.EXTENDED_DEVOPS_MEMBER_TO_EMAIL }}' | jq -r '.${{ steps.get_current_user_info.outputs.USERNAME }}')
+          echo $USER_EMAIL
+          echo "az ad group list --filter "displayName eq '${{ inputs.NAMESPACE }}'" --query "[?displayName=='${{ inputs.NAMESPACE }}'] | [?securityEnabled] | [0]" | jq -r '.id'"
+          echo "az ad group member list --group $GROUP_ID --query '[?mail == `$USER_EMAIL`].mail' | jq -r '.[]'"
+          GROUP_ID=$(az ad group list --filter "displayName eq '${{ inputs.NAMESPACE }}'" --query "[?displayName=='${{ inputs.NAMESPACE }}'] | [?securityEnabled] | [0]" | jq -r '.id')
+          USER_HAS_ACCESS=$(az ad group member list --group $GROUP_ID --query '[?mail == `$USER_EMAIL`].mail' | jq -r '.[]')
       - name: match user with devops user
         run: |
           echo "is_devops_member=false" >> $GITHUB_OUTPUT

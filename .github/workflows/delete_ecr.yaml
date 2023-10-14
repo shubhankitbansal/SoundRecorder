@@ -22,7 +22,7 @@ jobs:
           echo "az ad group list --filter "displayName eq '${{ inputs.NAMESPACE }}'" --query "[?displayName=='${{ inputs.NAMESPACE }}'] | [?securityEnabled] | [0]" | jq -r '.id'"
           echo "az ad group member list --group $GROUP_ID --query '[?mail == `$USER_EMAIL`].mail' | jq -r '.[]'"
           GROUP_ID=$(az ad group list --filter "displayName eq '${{ inputs.NAMESPACE }}'" --query "[?displayName=='${{ inputs.NAMESPACE }}'] | [?securityEnabled] | [0]" | jq -r '.id')
-          USER_HAS_ACCESS=$(az ad group member list --group $GROUP_ID --query '[?mail == `$USER_EMAIL`].mail' | jq -r '.[]')
+          USER_HAS_ACCESS=$(az ad group member list --group $GROUP_ID --query '[?mail == `${{ USER_EMAIL }}`].mail' | jq -r '.[]')
       - name: match user with devops user
         run: |
           echo "is_devops_member=false" >> $GITHUB_OUTPUT

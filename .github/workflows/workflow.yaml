@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           ls
-          python test1.p3
+          python test.py

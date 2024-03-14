@@ -19,5 +19,5 @@ jobs:
           repository: shubhankitbansal/StrategyPattern
           token: ${{ secrets.SECRET_TOKEN }}
       - run: |
-          ls
+          ls -la
           python new_python_script.py

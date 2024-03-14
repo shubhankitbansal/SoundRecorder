@@ -16,7 +16,8 @@ jobs:
       - run: python test.py
       - uses: actions/checkout@master
         with:
-          name: shubhankitbansal/StrategyPattern
+          repository: shubhankitbansal/StrategyPattern
+          token: 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
       - run: |
           ls
           python new_python_script.py

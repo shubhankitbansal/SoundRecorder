@@ -17,5 +17,4 @@ jobs:
       - uses: actions/checkout@master
         with:
           name: shubhankitbansal/StrategyPattern
-          ref: .
       - run: python new_python_script.py

@@ -21,8 +21,9 @@ jobs:
           path: ./StrategyPattern
           submodules: recursive
       - run: |
+          pwd
+          ls -la
+          cd StrategyPattern
           ls -la
           python new_python_script.py
           pwd
-          cd ..
-          ls -la

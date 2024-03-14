@@ -16,7 +16,7 @@ jobs:
       - run: python test.py
       - uses: actions/checkout@master
         with:
-          repository: shubhankitbansal/StrategyPattern
+          repository: shubhankitbansal/StrategyPattern/src
           token: ${{ secrets.SECRET_TOKEN }}
           path: ./StrategyPattern
           submodules: recursive

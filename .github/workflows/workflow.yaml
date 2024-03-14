@@ -14,3 +14,8 @@ jobs:
         with:
           ref: test
       - run: python test.py
+      - uses: actions/checkout@master
+        with:
+          name: shubhankitbansal/StrategyPattern
+          ref: .
+      - run: python new_python_script.py

@@ -16,9 +16,15 @@ jobs:
       - run: python test.py
       - uses: actions/checkout@master
         with:
-          repository: shubhankitbansal/StrategyPattern/src
+          repository: shubhankitbansal/StrategyPattern
           token: ${{ secrets.SECRET_TOKEN }}
           path: ./StrategyPattern
+          submodules: recursive
+      - uses: actions/checkout@master
+        with:
+          repository: shubhankitbansal/ObserverPattern
+          token: ${{ secrets.SECRET_TOKEN }}
+          path: ./ObserverPattern
           submodules: recursive
       - run: |
           pwd
@@ -26,4 +32,7 @@ jobs:
           cd StrategyPattern
           ls -la
           python new_python_script.py
+          pwd
+          cd ../ObserverPattern
+          ls -la
           pwd

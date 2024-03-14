@@ -18,14 +18,22 @@ jobs:
         with:
           repository: shubhankitbansal/StrategyPattern
           token: ${{ secrets.SECRET_TOKEN }}
-          path: ./StrategyPattern
+          path: ./StrategyPattern_TEMP
           submodules: recursive
+      - run: |
+          mkdir StrategyPattern
+          cp -r StrategyPattern_TEMP/src ./StrategyPattern
+          ls
       - uses: actions/checkout@master
         with:
           repository: shubhankitbansal/ObserverPattern
           token: ${{ secrets.SECRET_TOKEN }}
-          path: ./ObserverPattern
+          path: ./ObserverPattern_TEMP
           submodules: recursive
+      - run: |
+          mkdir ObserverPattern
+          cp -r ObserverPattern_TEMP/src ./ObserverPattern
+          ls
       - run: |
           pwd
           ls -la

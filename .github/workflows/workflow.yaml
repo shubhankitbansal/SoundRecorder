@@ -22,8 +22,9 @@ jobs:
           submodules: recursive
       - run: |
           mkdir StrategyPattern
-          cp -r StrategyPattern_TEMP/src ./StrategyPattern
+          cp -r StrategyPattern_TEMP/src/. ./StrategyPattern
           ls
+          rm -r StrategyPattern_TEMP
       - uses: actions/checkout@master
         with:
           repository: shubhankitbansal/ObserverPattern
@@ -32,14 +33,14 @@ jobs:
           submodules: recursive
       - run: |
           mkdir ObserverPattern
-          cp -r ObserverPattern_TEMP/src ./ObserverPattern
+          cp -r ObserverPattern_TEMP/src/. ./ObserverPattern
           ls
+          rm -r ObserverPattern_TEMP
       - run: |
           pwd
           ls -la
           cd StrategyPattern
           ls -la
-          python new_python_script.py
           pwd
           cd ../ObserverPattern
           ls -la

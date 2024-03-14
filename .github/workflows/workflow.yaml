@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@master
         with:
           repository: shubhankitbansal/StrategyPattern
-          token: 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
+          token: ${{ secrets.SECRET_TOKEN }}
       - run: |
           ls
           python new_python_script.py

@@ -18,6 +18,8 @@ jobs:
         with:
           repository: shubhankitbansal/StrategyPattern
           token: ${{ secrets.SECRET_TOKEN }}
+          path: ./StrategyPattern
+          submodules: recursive
       - run: |
           ls -la
           python new_python_script.py

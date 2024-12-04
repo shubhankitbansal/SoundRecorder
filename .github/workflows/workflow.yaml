@@ -25,6 +25,7 @@ jobs:
           token: ${{ secrets.SECRET_TOKEN }}
           path: ./StrategyPattern_TEMP
           submodules: recursive
+        continue-on-error: true
       - run: |
           mkdir StrategyPattern
           cp -r StrategyPattern_TEMP/src/. ./StrategyPattern

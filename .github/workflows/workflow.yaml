@@ -14,6 +14,11 @@ jobs:
         with:
           ref: test
       - run: python test.py
+      - name: Step that might fail
+        run: |
+          echo "This is a step that might fail"
+          exit 1  # Simulating failure
+        continue-on-error: true
       - uses: actions/checkout@master
         with:
           repository: shubhankitbansal/StrategyPattern
@@ -31,17 +36,3 @@ jobs:
           token: ${{ secrets.SECRET_TOKEN }}
           path: ./ObserverPattern_TEMP
           submodules: recursive
-      - run: |
-          mkdir ObserverPattern
-          cp -r ObserverPattern_TEMP/src/. ./ObserverPattern
-          ls
-          rm -r ObserverPattern_TEMP
-      - run: |
-          pwd
-          ls -la
-          cd StrategyPattern
-          ls -la
-          pwd
-          cd ../ObserverPattern
-          ls -la
-          pwd

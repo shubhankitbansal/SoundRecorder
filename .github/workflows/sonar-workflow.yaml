@@ -71,6 +71,9 @@ jobs:
           if [ -n "${{ steps.fetch_sonar_properties.outputs.javaBinaries }}" ]; then
             args="$args -Dsonar.java.binaries=${{ steps.fetch_sonar_properties.outputs.javaBinaries }}"
           fi
+          if [ -n "${{ steps.fetch_sonar_properties.outputs.exclusions }}" ]; then
+            args="$args -Dsonar.java.binaries=${{ steps.fetch_sonar_properties.outputs.exclusions }}"
+          fi
           echo args $args
           echo "args=$args" >> $GITHUB_OUTPUT
       - name: SonarQube Scan

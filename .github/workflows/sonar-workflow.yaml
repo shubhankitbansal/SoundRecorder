@@ -30,13 +30,9 @@ jobs:
           cp sonar-project1.properties sonar-project.properties 
           # Extract properties from sonar-project.properties
           sourceDir=$(awk -F'=' '/^sonar.sources=/ {print $2}' sonar-project.properties)
-          echo sourceDir : $sourceDir
           projectKey=$(awk -F'=' '/^sonar.projectKey=/ {print $2}' sonar-project.properties)
-          echo projectKey : $projectKey
           javaBinaries=$(awk -F'=' '/^sonar.java.binaries=/ {print $2}' sonar-project.properties)
-          echo javaBinaries1 $javaBinaries
-          exclusions=$(awk -F'=' '/^sonar.exclusions=/ {print $2}' sonar-project.properties)
-          echo exclusions: $exclusions
+          exclusions=$(awk -F'=' '/^sonar.exclusions=/ {print $2}' sonar-project.properties)\
   
           # Check if any required properties are empty
           if [ -z "$sourceDir" ]; then

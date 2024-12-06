@@ -38,29 +38,29 @@ jobs:
           if [ -z "$sourceDir" ]; then
             echo "sourceDir is empty"
           else
-            echo "sourceDir:$sourceDir"
-            echo "sourceDir=$sourceDir" >> $GITHUB_ENV
+            echo "sourceDir: $sourceDir"
+            echo "sourceDir=$sourceDir" >> $GITHUB_OUTPUT
           fi
   
           if [ -z "$projectKey" ]; then
             echo "projectKey is empty"
           else
             echo "projectKey: $projectKey"
-            echo "projectKey=$projectKey" >> $GITHUB_ENV
+            echo "projectKey=$projectKey" >> $GITHUB_OUTPUT
           fi
   
           if [ -z "$javaBinaries" ]; then
             echo "sonar.java.binaries is empty"
           else
             echo "sonar.java.binaries: $javaBinaries"
-            echo "javaBinaries=$javaBinaries" >> $GITHUB_ENV
+            echo "javaBinaries=$javaBinaries" >> $GITHUB_OUTPUT
           fi
   
           if [ -z "$exclusions" ]; then
             echo "sonar.exclusions is empty"
           else
             echo "sonar.exclusions: $exclusions"
-            echo "exclusions=$exclusions" >> $GITHUB_ENV
+            echo "exclusions=$exclusions" >> $GITHUB_OUTPUT
           fi
         continue-on-error: true
       - name: SonarQube Scan

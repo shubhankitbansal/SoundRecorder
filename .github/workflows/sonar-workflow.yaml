@@ -64,7 +64,7 @@ jobs:
           fi
         continue-on-error: true
       - name: SonarQube Scan
-        if: ${{ steps.check_sonar_properties.outputs.exists == 'true' && steps.fetch_sonar_properties.outputs.sourceDir != '' && steps.fetch_sonar_properties.outputs.projectKey != '' }}
+        if: ${{ steps.check_sonar_properties.outputs.exists == 'true' }}
         uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_HOST_URL: https://sonarqube.oyorooms.io

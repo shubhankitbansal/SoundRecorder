@@ -29,15 +29,13 @@ jobs:
           sed -e 's/ //g' sonar-project.properties > sonar-project1.properties
           cp sonar-project1.properties sonar-project.properties 
           # Extract properties from sonar-project.properties
-          sourceDir=$(grep "^sonar.sources=" sonar-project.properties | cut -d= -f2)
+          sourceDir=$(awk -F'=' '/^sonar.sources=/ {print $2}' sonar-project.properties)
           echo sourceDir : $sourceDir
-          projectKey=$(grep "^sonar.projectKey=" sonar-project.properties | cut -d= -f2)
+          projectKey=$(awk -F'=' '/^sonar.projectKey=/ {print $2}' sonar-project.properties)
           echo projectKey : $projectKey
           javaBinaries=$(awk -F'=' '/^sonar.java.binaries=/ {print $2}' sonar-project.properties)
           echo javaBinaries1 $javaBinaries
-          javaBinaries=$(grep "^sonar.java.binaries=" sonar-project.properties | cut -d= -f2)
-          echo javaBinaries
-          exclusions=$(grep "^sonar.exclusions=" sonar-project.properties | cut -d= -f2)
+          exclusions=$(awk -F'=' '/^sonar.exclusions=/ {print $2}' sonar-project.properties)
           echo exclusions: $exclusions
   
           # Check if any required properties are empty

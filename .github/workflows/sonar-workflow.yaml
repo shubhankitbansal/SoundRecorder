@@ -75,11 +75,11 @@ jobs:
           echo "args=$args" >> $GITHUB_OUTPUT
       - name: SonarQube Scan
         if: ${{ steps.check_sonar_properties.outputs.exists == 'true' && steps.fetch_sonar_properties.outputs.sourceDir != '' && steps.fetch_sonar_properties.outputs.projectKey != '' && steps.fetch_sonar_properties.outputs.javaBinaries == '' }}
-        run: |
-          echo ${{ steps.fetch_sonar_properties.outputs.sourceDir }}
-          echo ${{ steps.fetch_sonar_properties.outputs.projectKey  }}
-          echo ${{ steps.fetch_sonar_properties.outputs.javaBinaries }}
+        uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_HOST_URL: https://sonarqube.oyorooms.io
           SONAR_TOKEN: squ_07c5cafc2f21f97f199589562294b32c7f61909f
+        with:
+          projectBaseDir: ${{ steps.fetch_sonar_properties.outputs.sourceDir }}
+          args: ${{ steps.prepare_args.outputs.args }}
         

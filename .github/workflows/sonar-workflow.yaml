@@ -30,9 +30,13 @@ jobs:
           cp sonar-project1.properties sonar-project.properties 
           # Extract properties from sonar-project.properties
           sourceDir=$(grep "^sonar.sources=" sonar-project.properties | cut -d= -f2)
+          echo sourceDir : $sourceDir
           projectKey=$(grep "^sonar.projectKey=" sonar-project.properties | cut -d= -f2)
+          echo projectKey : $projectKey
           javaBinaries=$(grep "^sonar.java.binaries=" sonar-project.properties | cut -d= -f2)
+          echo javaBinaries : $javaBinaries
           exclusions=$(grep "^sonar.exclusions=" sonar-project.properties | cut -d= -f2)
+          echo exclusions: $exclusions
   
           # Check if any required properties are empty
           if [ -z "$sourceDir" ]; then

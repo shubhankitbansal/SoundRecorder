@@ -3,7 +3,7 @@ name: oyo-lite deployment
 on:
   push:
     branches:
-      - main
+      - master
 
 
 jobs:

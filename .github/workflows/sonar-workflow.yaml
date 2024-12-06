@@ -33,6 +33,8 @@ jobs:
           echo sourceDir : $sourceDir
           projectKey=$(grep "^sonar.projectKey=" sonar-project.properties | cut -d= -f2)
           echo projectKey : $projectKey
+          javaBinaries=$(awk -F'=' '/^sonar.java.binaries=/ {print $2}' sonar-project.properties)
+          echo javaBinaries1 $javaBinaries
           javaBinaries=$(grep "^sonar.java.binaries=" sonar-project.properties | cut -d= -f2)
           echo javaBinaries
           exclusions=$(grep "^sonar.exclusions=" sonar-project.properties | cut -d= -f2)

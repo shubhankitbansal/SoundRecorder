@@ -63,6 +63,16 @@ jobs:
             echo "exclusions=$exclusions" >> $GITHUB_OUTPUT
           fi
         continue-on-error: true
+      - name: Prepare SonarQube Args
+        if: ${{ steps.check_sonar_properties.outputs.exists == 'true' && steps.fetch_sonar_properties.outputs.sourceDir != '' && steps.fetch_sonar_properties.outputs.projectKey != '' }}
+        id: prepare_args
+        run: |
+          args="-Dsonar.projectKey=${{ steps.fetch_sonar_properties.outputs.projectKey }}"
+          if [ -n "${{ steps.fetch_sonar_properties.outputs.javaBinaries }}" ]; then
+            args="$args -Dsonar.java.binaries=${{ steps.fetch_sonar_properties.outputs.javaBinaries }}"
+          fi
+          echo args $args
+          echo "args=$args" >> $GITHUB_OUTPUT
       - name: SonarQube Scan
         if: ${{ steps.check_sonar_properties.outputs.exists == 'true' && steps.fetch_sonar_properties.outputs.sourceDir != '' && steps.fetch_sonar_properties.outputs.projectKey != '' && steps.fetch_sonar_properties.outputs.javaBinaries == '' }}
         run: |

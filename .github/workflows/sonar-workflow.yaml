@@ -5,11 +5,15 @@ on:
     branches:
       - master
 
-
+env:
+  test: this is a test environment
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo "abc $test"
+          echo "def ${{ env.test }}"
       - uses: actions/checkout@v3
       - name: Check if sonar-project.properties exists
         id: check_sonar_properties

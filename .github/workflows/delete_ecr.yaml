@@ -6,11 +6,15 @@ on:
       NAMESPACE:
           required: true
           type: string
-
+env:
+  test: This is a test variable
 jobs:
   build:
     runs-on:  ubuntu-latest
     steps:
+      - run: |
+          echo abc: $test
+          echo def: ${{ env.test }}
       - name: check permission to actors
         id: get_current_user_info
         run: |

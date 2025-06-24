@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-        image: $env
+        image: $test
     steps:
       - run: |
           echo "abc $test"

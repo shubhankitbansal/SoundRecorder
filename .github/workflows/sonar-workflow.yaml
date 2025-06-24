@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  test: this is a test environment
+  test: adoptopenjdk/openjdk11:alpine
 jobs:
   build:
     runs-on: ubuntu-latest

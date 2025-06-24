@@ -7,11 +7,12 @@ on:
 
 env:
   test: adoptopenjdk/openjdk11:alpine
+  
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
-        image: $test
+        image: ${{ env.test }}
     steps:
       - run: |
           echo "abc $test"
